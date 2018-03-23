@@ -3,7 +3,7 @@ var propertiesReader = require('properties-reader');
 var http = require('http');
 
 // Properties reading
-var properties = propertiesReader('./Resources/properties.ini');
+var properties = propertiesReader('./resources/properties.ini');
 var port = properties.get('general.port');
 var secret = properties.get('token.secret');
 var ttl = properties.get('token.ttl');

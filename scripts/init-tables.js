@@ -4,7 +4,7 @@ var propertiesReader = require('properties-reader');
 var md5 = require('md5');
 
 // Properties reading
-var properties = propertiesReader('./Resources/properties.ini');
+var properties = propertiesReader('./resources/properties.ini');
 var databaseName = properties.get('database.name');
 var databaseUserTable = properties.get('database.user.table');
 var databaseGrantTable = properties.get('database.grant.table');

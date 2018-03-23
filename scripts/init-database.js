@@ -3,7 +3,7 @@ var propertiesReader = require('properties-reader');
 var connectionManager = require('../lib/db-functions.js');
 
 // Properties reading
-var properties = propertiesReader('./Resources/properties.ini');
+var properties = propertiesReader('./resources/properties.ini');
 var databaseHost = properties.get('database.host');
 var databaseUser = properties.get('database.user');
 var databasePassword = properties.get('database.password');

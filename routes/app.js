@@ -37,7 +37,7 @@ router.get('/token', function (req, res) {
 });
 
 // Register a route that requires a valid token to view data
-app.get('/verify', function (req, res) {
+router.get('/verify', function (req, res) {
     var token = req.query.token;
 
     verifyToken(token, function (err) {
