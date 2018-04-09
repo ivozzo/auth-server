@@ -10,7 +10,6 @@ var databaseUserTable = properties.get('database.user.table');
 var databaseGrantTable = properties.get('database.grant.table');
 var mainUser = properties.get('general.username');
 var mainPassword = properties.get('general.password');
-var secret_key = properties.get('database.secret');
 
 function createTables(connection) {
 
