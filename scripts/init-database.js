@@ -12,16 +12,28 @@ var databaseName = properties.get('database.name');
 function createDatabase(connection) {
 
     connection.query(`CREATE DATABASE IF NOT EXISTS ${databaseName}`, function (err, result) {
-        if (err) throw err;
-        console.log(`Database ${databaseName} OK`);
+        if (err) {
+            if (err.code === 'ENOTFOUND'){
+                console.error('Cannot connect to database, please check if you can access the database url');
+                throw err;
+            }
+        } else {
+            console.log(`Database ${databaseName} OK`);
+        }
     });
 }
 
 var connection = connectionManager.getDatabaseConnection();
 
 connection.connect(function (err) {
-    if (err) throw err;
-    console.log(`Connected, checking if database ${databaseName} already exists`);
+    if (err) {
+        if (err.code === 'ENOTFOUND'){
+            console.error('Cannot connect to database, please check if you can access the database url');
+            throw err;
+        }
+    } else {
+        console.log(`Connected, checking if database ${databaseName} already exists`);
+    }
 });
 
 createDatabase(connection);

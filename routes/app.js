@@ -1,7 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var md5 = require('md5');
-var database = require('../lib/db');
+const propertiesReader = require('properties-reader');
+const express = require('express');
+const router = express.Router();
+const md5 = require('md5');
+const database = require('../lib/db');
+const jwt = require('jsonwebtoken');
+
+// Properties reading
+const properties = propertiesReader('./resources/properties.ini');
+const secret = properties.get('token.secret');
+const ttl = properties.get('token.ttl');
 
 // Register the home route that displays a welcome message
 router.get('/', function (req, res) {
@@ -23,9 +30,9 @@ router.get('/token', function (req, res) {
                     }, secret, {
                         expiresIn: ttl
                     });
-                    res.status(200).send(token)
+                    res.cookie('AuthDomain', token, { domain: 'nico.com', path: '/token', secure: true }).status(200).send('User authorized');
                 } else {
-                    res.status(401).send("User not authorized")
+                    res.status(401).send("User not authorized");
                 }
             } else {
                 res.status(404).send("User not found")

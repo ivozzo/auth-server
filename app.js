@@ -1,6 +1,5 @@
 // Dependencies
 var express = require('express');
-var jwt = require('jsonwebtoken');
 var path = require('path');
 var appRoutes = require('./routes/app');
 

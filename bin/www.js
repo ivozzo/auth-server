@@ -5,12 +5,9 @@ const http = require('http');
 // Properties reading
 const properties = propertiesReader('./resources/properties.ini');
 const port = properties.get('general.port');
-const secret = properties.get('token.secret');
-const ttl = properties.get('token.ttl');
-const secret_key = properties.get('database.secret');
 
 // Create server
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 // Listen on specified port
 server.listen(port);
