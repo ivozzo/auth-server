@@ -1,13 +1,13 @@
-var app = require('../app');
-var propertiesReader = require('properties-reader');
-var http = require('http');
+const app = require('../app');
+const propertiesReader = require('properties-reader');
+const http = require('http');
 
 // Properties reading
-var properties = propertiesReader('./resources/properties.ini');
-var port = properties.get('general.port');
-var secret = properties.get('token.secret');
-var ttl = properties.get('token.ttl');
-var secret_key = properties.get('database.secret');
+const properties = propertiesReader('./resources/properties.ini');
+const port = properties.get('general.port');
+const secret = properties.get('token.secret');
+const ttl = properties.get('token.ttl');
+const secret_key = properties.get('database.secret');
 
 // Create server
 var server = http.createServer(app);
