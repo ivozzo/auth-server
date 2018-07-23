@@ -19,8 +19,8 @@ router.get('/', function (req, res) {
 router.get('/token', function (req, res) {
 
     if (req.query.username && req.query.password) {
-        var username = req.query.username;
-        var password = md5(req.query.password);
+        const username = req.query.username;
+        const password = md5(req.query.password);
 
         database.getUser(username, function (user) {
             if (user && user.length > 0) {
@@ -45,7 +45,7 @@ router.get('/token', function (req, res) {
 
 // Register a route that requires a valid token to view data
 router.get('/verify', function (req, res) {
-    var token = req.query.token;
+    const token = req.query.token;
 
     verifyToken(token, function (err) {
         if (!err) {
