@@ -68,8 +68,8 @@ connection.connect(function (err) {
     if (err) throw err;
     console.log(`Connected to dabatase ${databaseName}`);
 });
-console.log(`Checking for tables existance`)
+console.log(`Checking for tables existance`);
 createTables(connection);
-console.log(`Checking for main user existance`)
+console.log(`Checking for main user existance`);
 createMainUser(connection);
 connection.end();

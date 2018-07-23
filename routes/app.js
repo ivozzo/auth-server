@@ -42,7 +42,7 @@ router.get('/verify', function (req, res) {
 
     verifyToken(token, function (err) {
         if (!err) {
-            res.status(200).send("Authorized")
+            res.status(200).send("Authorized");
         } else {
             res.status(401).send("Unauthorized");
         }

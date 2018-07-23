@@ -1,4 +1,4 @@
-FROM node:9.4.0
+FROM node:10.6.0-alpine
 
 RUN mkdir /opt/auth-server
 WORKDIR /opt/auth-server
