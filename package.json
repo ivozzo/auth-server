@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node bin/www.js",
-    "prepare": "node scripts/init-database.js && node scripts/init-tables.js",
     "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/nico_fe/nico"
+    "url": "https://github.com/ivozzo/auth-server"
   },
   "keywords": [
     "auth",
