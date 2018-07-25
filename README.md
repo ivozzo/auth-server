@@ -29,16 +29,6 @@ database | name | Name of the database
 database | user.table | Name of the user table
 database | grant.table | Name of the grant table
 
-**Please note that the database will be created by the init scripts, as well as user and grant tables**
-
-### Preparing the database
-As noted before, the database and tables creation have been automatized with scripts.
-Use 
-```
-npm prepare
-```
-to launch these scripts.
-
 ### Start the server
 To launch the server use
 ```

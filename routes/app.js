@@ -30,7 +30,8 @@ router.get('/token', function (req, res) {
                     }, secret, {
                         expiresIn: ttl
                     });
-                    res.cookie('AuthDomain', token, { domain: 'nico.com', path: '/token', secure: true }).status(200).send('User authorized');
+                    // res.cookie('NICO-AuthDomain', token, { domain: 'nico.com', path: '/token', secure: true }).status(200).send('User authorized');
+                    res.cookie('NICO-AuthDomain', token, {secure: true}).status(200).send('User authorized');
                 } else {
                     res.status(401).send("User not authorized");
                 }
