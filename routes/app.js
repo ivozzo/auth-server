@@ -18,9 +18,18 @@ router.get('/', function (req, res) {
 // Register the route to get a new token
 router.get('/token', function (req, res) {
 
-    if (req.query.username && req.query.password) {
-        const username = req.query.username;
-        const password = md5(req.query.password);
+    let auth = req.headers['authorization'];
+
+    if (!auth){
+        res.status(400).send("No username and password provided")
+    } else if (auth) {
+    let splitAuth = auth.split(' ');
+        let buf = new Buffer(splitAuth[1], 'base64');
+        let plain_auth = buf.toString();
+        let creds = plain_auth.split(':');
+
+        const username = creds[0];
+        const password = md5(creds[1]);
 
         database.getUser(username, function (user) {
             if (user && user.length > 0) {
@@ -31,7 +40,7 @@ router.get('/token', function (req, res) {
                         expiresIn: ttl
                     });
                     // res.cookie('NICO-AuthDomain', token, { domain: 'nico.com', path: '/token', secure: true }).status(200).send('User authorized');
-                    res.cookie('NICO-AuthDomain', token, {path: '/token', secure: true}).status(200).send('User authorized');
+                    res.cookie('NICO-AuthDomain', token, {path: '/token', secure: true, httpOnly: true}).status(200).send('User authorized');
                 } else {
                     res.status(401).send("User not authorized");
                 }
@@ -39,8 +48,6 @@ router.get('/token', function (req, res) {
                 res.status(404).send("User not found")
             }
         });
-    } else {
-        res.status(400).send("No username and password provided")
     }
 });
 
