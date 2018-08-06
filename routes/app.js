@@ -22,7 +22,7 @@ router.get('/token', function (req, res) {
 
     if (!auth){
         res.status(400).send("No username and password provided")
-    } else if (auth) {
+    } else {
     let splitAuth = auth.split(' ');
         let buf = new Buffer(splitAuth[1], 'base64');
         let plain_auth = buf.toString();
