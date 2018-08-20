@@ -1,6 +1,8 @@
 # Auth-Server
-## Launch your personal auth server 
 
+![SonarCloud Status](https://sonarcloud.io/api/project_badges/measure?project=ivozzo.auth-server&metric=alert_status)
+
+## Launch your personal auth server 
 In this repository you'll find your personal auth server and the instructions for make it up and running in no time.
 
 ## Needed software
